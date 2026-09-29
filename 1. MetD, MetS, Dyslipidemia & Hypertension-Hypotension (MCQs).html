@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on MetD, MetS, Dyslipidemia &amp; Hypertension-Hypotension</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on MetD, MetS, Dyslipidemia &amp; Hypertension-Hypotension</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Metabolic Disorders, Metabolic Syndrome, Dyslipidemia, and Blood Pressure Disorders: definitions, criteria, and management</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">40</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">40</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/40</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data extracted from 1. MetD, MetS, Dyslipidemia & Hypertension-Hypotension (MCQs).pdf
+        const originalQuizData = [
+            {
+                question: "Anabolic processes are characterized by:",
+                options: [
+                    "Breaking down large molecules into smaller ones",
+                    "Building up large molecules from smaller ones, consuming energy",
+                    "Releasing energy",
+                    "Producing only catabolic enzymes"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "Catabolic processes are defined as:",
+                options: [
+                    "The destructive part of metabolism where large molecules are broken down",
+                    "The constructive part of metabolism",
+                    "Requiring an input of energy",
+                    "Building complex compounds"
+                ],
+                answer: 0,
+                explanation: "Page 5"
+            },
+            {
+                question: "Which of the following is an example of a catabolic process?",
+                options: [
+                    "Protein synthesis",
+                    "Glycogen storage",
+                    "Digestion of polysaccharides into monosaccharides",
+                    "Amino acids linking to form proteins"
+                ],
+                answer: 2,
+                explanation: "Page 5"
+            },
+            {
+                question: "During fasting, the body shifts to which metabolic state?",
+                options: [
+                    "Anabolic state",
+                    "Catabolic state",
+                    "Neutral state",
+                    "Synthetic state"
+                ],
+                answer: 1,
+                explanation: "Page 6"
+            },
+            {
+                question: "Inherited metabolic disorders occur when a defective gene causes:",
+                options: [
+                    "Hormone excess",
+                    "Enzyme deficiency",
+                    "Vitamin excess",
+                    "Protein excess"
+                ],
+                answer: 1,
+                explanation: "Page 7"
+            },
+            {
+                question: "Metabolic diseases can also occur when which organs do not function properly (primarily)?",
+                options: [
+                    "Heart and lungs",
+                    "Kidneys and spleen",
+                    "Brain and spinal cord",
+                    "Liver or pancreas"
+                ],
+                answer: 3,
+                explanation: "Page 7"
+            },
+            {
+                question: "Metabolic disorders can be treatable by which management, especially if detected early?",
+                options: [
+                    "Surgery",
+                    "Nutrition management",
+                    "Radiation therapy",
+                    "Physical therapy only"
+                ],
+                answer: 1,
+                explanation: "Page 9"
+            },
+            {
+                question: "Metabolic syndrome (MetS) forms a cluster of metabolic dysregulations including insulin resistance, dyslipidemia, central obesity, and:",
+                options: [
+                    "Hypertension",
+                    "Hypotension",
+                    "Anemia",
+                    "Hyperthyroidism"
+                ],
+                answer: 0,
+                explanation: "Page 10"
+            },
+            {
+                question: "According to the diagnosis criteria for MetS, serum triglycerides level must be:",
+                options: [
+                    "100 mg/dL or greater",
+                    "150 mg/dL or greater",
+                    "200 mg/dL or greater",
+                    "250 mg/dL or greater"
+                ],
+                answer: 1,
+                explanation: "Page 11"
+            },
+            {
+                question: "According to the diagnosis criteria for MetS, reduced HDL is defined as less than:",
+                options: [
+                    "30 mg/dL in men or less than 40 mg/dL in women",
+                    "40 mg/dL in men or less than 50 mg/dL in women",
+                    "50 mg/dL in men or less than 60 mg/dL in women",
+                    "60 mg/dL in men or less than 70 mg/dL in women"
+                ],
+                answer: 1,
+                explanation: "Page 11"
+            },
+            {
+                question: "The diagnosis of MetS requires the presence of how many metabolic abnormalities?",
+                options: [
+                    "1 or more",
+                    "2 or more",
+                    "3 or more",
+                    "5 or more"
+                ],
+                answer: 2,
+                explanation: "Page 11"
+            },
+            {
+                question: "Dyslipidemia is defined as:",
+                options: [
+                    "Normal levels of lipids in the blood",
+                    "Low levels of cholesterol only",
+                    "High levels of HDL only",
+                    "Abnormal level of lipids in the blood, including cholesterol and triglycerides"
+                ],
+                answer: 3,
+                explanation: "Page 13"
+            },
+            {
+                question: "Normal total cholesterol is:",
+                options: [
+                    "< 100 mg/dL",
+                    "< 150 mg/dL",
+                    "< 200 mg/dL",
+                    "< 250 mg/dL"
+                ],
+                answer: 2,
+                explanation: "Page 14"
+            },
+            {
+                question: "Normal LDL cholesterol is:",
+                options: [
+                    "< 100 mg/dL",
+                    "< 150 mg/dL",
+                    "< 200 mg/dL",
+                    "< 250 mg/dL"
+                ],
+                answer: 0,
+                explanation: "Page 14"
+            },
+            {
+                question: "Normal HDL cholesterol in women is:",
+                options: [
+                    "> 20 mg/dL",
+                    "> 30 mg/dL",
+                    "> 40 mg/dL",
+                    "> 50 mg/dL"
+                ],
+                answer: 3,
+                explanation: "Page 14"
+            },
+            {
+                question: "Why is LDL called 'bad cholesterol'?",
+                options: [
+                    "It removes excess cholesterol from tissues",
+                    "It transports cholesterol from the liver to tissues, and when elevated, cholesterol accumulates in artery walls",
+                    "It returns cholesterol to the liver for disposal",
+                    "It reduces cardiovascular risk"
+                ],
+                answer: 1,
+                explanation: "Page 16"
+            },
+            {
+                question: "Why is HDL called 'good cholesterol'?",
+                options: [
+                    "It removes excess cholesterol from tissues and arteries and returns it to the liver for disposal",
+                    "It transports cholesterol to tissues",
+                    "It increases plaque formation",
+                    "It narrows blood vessels"
+                ],
+                answer: 0,
+                explanation: "Page 16"
+            },
+            {
+                question: "Triglycerides consist of:",
+                options: [
+                    "Two glycerol molecules and one fatty acid",
+                    "One glycerol molecule and three fatty acids",
+                    "Three glycerol molecules and one fatty acid",
+                    "One glycerol molecule and two fatty acids"
+                ],
+                answer: 1,
+                explanation: "Page 17"
+            },
+            {
+                question: "Hyperlipidemia is defined as:",
+                options: [
+                    "Any abnormality in blood lipid levels",
+                    "An abnormally high level of lipids (fats) in the blood",
+                    "Low levels of HDL only",
+                    "Low levels of LDL only"
+                ],
+                answer: 1,
+                explanation: "Page 18"
+            },
+            {
+                question: "Primary dyslipidemia is caused by:",
+                options: [
+                    "Obesity",
+                    "Diabetes mellitus",
+                    "Genetic causes",
+                    "Sedentary lifestyle"
+                ],
+                answer: 2,
+                explanation: "Page 20"
+            },
+            {
+                question: "Which of the following is a secondary cause of dyslipidemia?",
+                options: [
+                    "Hypothyroidism",
+                    "Family history",
+                    "Genetics",
+                    "Age"
+                ],
+                answer: 0,
+                explanation: "Page 20"
+            },
+            {
+                question: "Most patients with dyslipidemia are:",
+                options: [
+                    "Symptomatic with chest pain",
+                    "Asymptomatic",
+                    "Presenting with xanthomas",
+                    "Presenting with corneal arcus"
+                ],
+                answer: 1,
+                explanation: "Page 21"
+            },
+            {
+                question: "In severe cases of dyslipidemia, which clinical manifestation may be seen?",
+                options: [
+                    "Xanthomas",
+                    "Jaundice",
+                    "Cyanosis",
+                    "Clubbing"
+                ],
+                answer: 0,
+                explanation: "Page 21"
+            },
+            {
+                question: "Which medication is an example of a statin used to lower LDL cholesterol?",
+                options: [
+                    "Atorvastatin",
+                    "Propranolol",
+                    "Amlodipine",
+                    "Furosemide"
+                ],
+                answer: 0,
+                explanation: "Page 23"
+            },
+            {
+                question: "For dyslipidemia, aerobic exercise is recommended at which frequency?",
+                options: [
+                    "1-2 days/week",
+                    "3-5 days/week",
+                    "6-7 days/week",
+                    "Only once a week"
+                ],
+                answer: 1,
+                explanation: "Page 24"
+            },
+            {
+                question: "Which of the following is an evidence-based benefit of regular exercise for dyslipidemia?",
+                options: [
+                    "Decreases HDL cholesterol",
+                    "Increases triglycerides",
+                    "Increases HDL cholesterol",
+                    "Worsens insulin sensitivity"
+                ],
+                answer: 2,
+                explanation: "Page 25"
+            },
+            {
+                question: "Hypertension is defined using specific levels of SBP ≥ 140 mmHg and DBP:",
+                options: [
+                    "≥ 80 mmHg",
+                    "≥ 85 mmHg",
+                    "≥ 90 mmHg",
+                    "≥ 100 mmHg"
+                ],
+                answer: 2,
+                explanation: "Page 31"
+            },
+            {
+                question: "According to the ACC/AHA classification, Stage 1 Hypertension is defined as:",
+                options: [
+                    "SBP 120-129 or DBP < 80",
+                    "SBP 130-139 or DBP 80-89",
+                    "SBP ≥ 140 or DBP ≥ 90",
+                    "SBP > 180 or DBP > 120"
+                ],
+                answer: 1,
+                explanation: "Page 33"
+            },
+            {
+                question: "Hypertensive emergency is defined as more than 180/120 mmHg with:",
+                options: [
+                    "No symptoms",
+                    "Acute target-organ damage",
+                    "Mild headache only",
+                    "Normal ECG"
+                ],
+                answer: 1,
+                explanation: "Page 33"
+            },
+            {
+                question: "Primary (essential) hypertension accounts for approximately what percentage of cases?",
+                options: [
+                    "5-10%",
+                    "50-60%",
+                    "90-95%",
+                    "100%"
+                ],
+                answer: 2,
+                explanation: "Page 37"
+            },
+            {
+                question: "Isolated Systolic Hypertension (ISH) is defined as:",
+                options: [
+                    "SBP ≥ 140 mmHg and DBP < 90 mmHg",
+                    "SBP < 140 mmHg and DBP ≥ 90 mmHg",
+                    "SBP ≥ 140 mmHg and DBP ≥ 90 mmHg",
+                    "SBP < 120 mmHg and DBP < 80 mmHg"
+                ],
+                answer: 0,
+                explanation: "Page 38"
+            },
+            {
+                question: "The main mechanism of Isolated Systolic Hypertension is:",
+                options: [
+                    "Increased peripheral vascular resistance",
+                    "Arterial stiffness, especially of the aorta and large arteries",
+                    "Sympathetic nervous system overactivity",
+                    "Obesity"
+                ],
+                answer: 1,
+                explanation: "Page 39"
+            },
+            {
+                question: "Isolated Diastolic Hypertension (IDH) is defined as:",
+                options: [
+                    "DBP ≥ 90 mmHg and SBP < 140 mmHg",
+                    "DBP ≥ 90 mmHg and SBP ≥ 140 mmHg",
+                    "DBP < 90 mmHg and SBP ≥ 140 mmHg",
+                    "DBP < 80 mmHg and SBP < 120 mmHg"
+                ],
+                answer: 0,
+                explanation: "Page 41"
+            },
+            {
+                question: "Which lifestyle change is recommended for hypertension management regarding dietary sodium?",
+                options: [
+                    "Increase sodium to > 4 g/day",
+                    "No change in sodium intake",
+                    "Eliminate all sodium",
+                    "Reduce dietary sodium to < 2.4 g/day"
+                ],
+                answer: 3,
+                explanation: "Page 44"
+            },
+            {
+                question: "Which anti-hypertensive medication class can cause heart palpitations, swollen ankles, and headaches?",
+                options: [
+                    "Diuretics",
+                    "Beta blockers",
+                    "Calcium channel blockers",
+                    "ACE inhibitors"
+                ],
+                answer: 2,
+                explanation: "Page 45"
+            },
+            {
+                question: "Hypotension is generally defined as a systolic blood pressure of less than:",
+                options: [
+                    "100 mmHg",
+                    "90 mmHg",
+                    "80 mmHg",
+                    "70 mmHg"
+                ],
+                answer: 1,
+                explanation: "Page 52"
+            },
+            {
+                question: "Severely low blood pressure can deprive the brain and other vital organs of oxygen and nutrients, leading to a life-threatening condition called:",
+                options: [
+                    "Shock",
+                    "Stroke",
+                    "Coma",
+                    "Seizure"
+                ],
+                answer: 0,
+                explanation: "Page 53"
+            },
+            {
+                question: "Orthostatic hypotension is indicated if there is a drop of how many mmHg in systolic pressure upon standing?",
+                options: [
+                    "10 mmHg",
+                    "15 mmHg",
+                    "20 mmHg",
+                    "30 mmHg"
+                ],
+                answer: 2,
+                explanation: "Page 58"
+            },
+            {
+                question: "Vasovagal syncope occurs as a result of increased activity of which nerve?",
+                options: [
+                    "Phrenic nerve",
+                    "Vagus nerve",
+                    "Trigeminal nerve",
+                    "Sciatic nerve"
+                ],
+                answer: 1,
+                explanation: "Page 58"
+            },
+            {
+                question: "Fludrocortisone is the first-line therapy for patients with chronic hypotension or resistant orthostatic hypotension because it works by:",
+                options: [
+                    "Increasing peripheral vascular resistance",
+                    "Increasing vascular tone",
+                    "Increasing vascular viscosity",
+                    "Increasing the intravascular volume"
+                ],
+                answer: 3,
+                explanation: "Page 61"
+            }
+        ];
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to create a randomized version of the quiz data
+        function createRandomizedQuizData() {
+            const randomizedData = [];
+            
+            originalQuizData.forEach(question => {
+                // Create a copy of the original question
+                const randomizedQuestion = {
+                    question: question.question,
+                    options: [...question.options], // Copy options array
+                    originalAnswer: question.answer, // Store original answer index
+                    explanation: question.explanation
+                };
+                
+                // Create an array of indices [0, 1, 2, 3]
+                const indices = [0, 1, 2, 3];
+                
+                // Shuffle the indices
+                shuffleArray(indices);
+                
+                // Create a new options array with shuffled order
+                const shuffledOptions = indices.map(index => question.options[index]);
+                
+                // Find the new position of the correct answer
+                const newAnswerIndex = indices.indexOf(question.answer);
+                
+                // Update the question with shuffled options and new answer
+                randomizedQuestion.options = shuffledOptions;
+                randomizedQuestion.answer = newAnswerIndex;
+                
+                randomizedData.push(randomizedQuestion);
+            });
+            
+            return randomizedData;
+        }
+
+        // Create randomized quiz data
+        let quizData = createRandomizedQuizData();
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                const correctLetter = String.fromCharCode(65 + question.answer);
+                const correctAnswerText = question.options[question.answer];
+                
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${correctLetter}) ${correctAnswerText}` : ''}
+                        ${question.explanation ? `<br><br>Explanation: ${question.explanation}` : ''}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Metabolic Disorders, Metabolic Syndrome, Dyslipidemia, and Blood Pressure Disorders.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                const correctLetter = String.fromCharCode(65 + item.correctAnswer);
+                const userLetter = String.fromCharCode(65 + item.userAnswer);
+                
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${userLetter}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${item.options[item.correctAnswer]}</div>
+                        ${item.explanation ? `<div class="review-explanation">${item.explanation}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            // Re-randomize the quiz data when restarting
+            quizData = createRandomizedQuizData();
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
