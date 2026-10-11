@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Diabetes Mellitus and Geriatrics</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Diabetes Mellitus and Geriatrics</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Diabetes Mellitus and Geriatrics: hypotension management, diabetes types, complications, and theories of aging</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">50</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">50</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/50</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data extracted from 2. Diabetes Mellitus and Geriatrics (MCQs).pdf
+        const originalQuizData = [
+            {
+                question: "Treatment for low blood pressure may include all of the following EXCEPT:",
+                options: [
+                    "Drinking more fluids to prevent dehydration",
+                    "Taking medicines to raise blood pressure",
+                    "Adjusting medicines that cause low blood pressure",
+                    "Immediately administering vasodilators"
+                ],
+                answer: 3,
+                explanation: "Page 1"
+            },
+            {
+                question: "Adding which substance to the diet can relieve symptoms of mild hypotension?",
+                options: [
+                    "Potassium",
+                    "Electrolytes",
+                    "Calcium",
+                    "Vitamin D"
+                ],
+                answer: 1,
+                explanation: "Page 1"
+            },
+            {
+                question: "Which morning dose can be effective for mild hypotension?",
+                options: [
+                    "Aspirin",
+                    "Caffeine",
+                    "Alcohol",
+                    "Antihistamine"
+                ],
+                answer: 1,
+                explanation: "Page 1"
+            },
+            {
+                question: "In mild cases of hypotension where the patient is still responsive, which position increases venous return?",
+                options: [
+                    "Sitting upright",
+                    "Standing",
+                    "Lying on the back with legs lifted",
+                    "Prone position"
+                ],
+                answer: 2,
+                explanation: "Page 1"
+            },
+            {
+                question: "According to the four steps of hypotensive shock treatment, which vasopressor is possibly better than dopamine concerning risk of death?",
+                options: [
+                    "Norepinephrine",
+                    "Epinephrine",
+                    "Vasopressin",
+                    "Phenylephrine"
+                ],
+                answer: 0,
+                explanation: "Page 1"
+            },
+            {
+                question: "The best way to determine if a person will benefit from fluids is by doing a passive leg raise followed by:",
+                options: [
+                    "Measuring blood pressure only",
+                    "Measuring the output from the heart",
+                    "Measuring respiratory rate",
+                    "Measuring urine output"
+                ],
+                answer: 1,
+                explanation: "Page 1"
+            },
+            {
+                question: "Which medication is the first-line therapy (in the absence of heart failure) for patients with chronic hypotension or resistant orthostatic hypotension?",
+                options: [
+                    "Midodrine",
+                    "Erythropoietin",
+                    "Fludrocortisone",
+                    "Norepinephrine"
+                ],
+                answer: 2,
+                explanation: "Page 2"
+            },
+            {
+                question: "Fludrocortisone works by:",
+                options: [
+                    "Increasing peripheral vascular resistance",
+                    "Increasing the intravascular volume",
+                    "Increasing vascular tone",
+                    "Increasing vascular viscosity"
+                ],
+                answer: 1,
+                explanation: "Page 2"
+            },
+            {
+                question: "Midodrine is a therapy used for severe orthostatic hypotension and works by:",
+                options: [
+                    "Increasing peripheral vascular resistance",
+                    "Increasing the intravascular volume",
+                    "Increasing vascular viscosity",
+                    "Decreasing vascular tone"
+                ],
+                answer: 0,
+                explanation: "Page 2"
+            },
+            {
+                question: "Erythropoietin is given to patients with neurogenic orthostatic hypotension and works through:",
+                options: [
+                    "Increasing peripheral vascular resistance",
+                    "Increasing vascular volume and viscosity",
+                    "Increasing vascular tone",
+                    "Decreasing intravascular volume"
+                ],
+                answer: 1,
+                explanation: "Page 2"
+            },
+            {
+                question: "Diabetes mellitus is defined as a metabolic disorder characterized by hyperglycemia due to:",
+                options: [
+                    "Excess insulin production only",
+                    "Excess glucagon production only",
+                    "Decreased glucose intake",
+                    "Absolute or relative lack of insulin or cellular resistance to insulin"
+                ],
+                answer: 3,
+                explanation: "Page 4"
+            },
+            {
+                question: "Type 1 diabetes mellitus is characterized by:",
+                options: [
+                    "Insulin resistance with relative insulin deficiency",
+                    "Autoimmune destruction of pancreatic beta-cells with absolute insulin deficiency",
+                    "Occurs only during pregnancy",
+                    "Most common form of diabetes"
+                ],
+                answer: 1,
+                explanation: "Page 5"
+            },
+            {
+                question: "Type 1 diabetes mellitus accounts for what percentage of diabetes cases?",
+                options: [
+                    "1-2%",
+                    "5-10%",
+                    "50-60%",
+                    "90-95%"
+                ],
+                answer: 1,
+                explanation: "Page 5"
+            },
+            {
+                question: "Type 2 diabetes mellitus is characterized by:",
+                options: [
+                    "Autoimmune destruction of beta cells",
+                    "Absolute insulin deficiency",
+                    "Occurs only during pregnancy",
+                    "Insulin resistance with relative insulin deficiency"
+                ],
+                answer: 3,
+                explanation: "Page 5"
+            },
+            {
+                question: "Type 2 diabetes mellitus accounts for what percentage of diabetes cases?",
+                options: [
+                    "5-10%",
+                    "50-60%",
+                    "90-95%",
+                    "100%"
+                ],
+                answer: 2,
+                explanation: "Page 5"
+            },
+            {
+                question: "Gestational diabetes mellitus occurs during:",
+                options: [
+                    "Childhood",
+                    "Adolescence",
+                    "Pregnancy",
+                    "Old age"
+                ],
+                answer: 2,
+                explanation: "Page 5"
+            },
+            {
+                question: "The classic symptoms of diabetes mellitus (the three Poly) include all of the following EXCEPT:",
+                options: [
+                    "Polyuria",
+                    "Polydipsia",
+                    "Polyphagia",
+                    "Polycythemia"
+                ],
+                answer: 3,
+                explanation: "Page 6"
+            },
+            {
+                question: "Which of the following is a modifiable risk factor for diabetes?",
+                options: [
+                    "Family history",
+                    "Increasing age",
+                    "Obesity",
+                    "Ethnicity"
+                ],
+                answer: 2,
+                explanation: "Page 7"
+            },
+            {
+                question: "Which of the following is a non-modifiable risk factor for diabetes?",
+                options: [
+                    "Obesity",
+                    "Physical inactivity",
+                    "Family history",
+                    "Smoking"
+                ],
+                answer: 2,
+                explanation: "Page 7"
+            },
+            {
+                question: "The islets of Langerhans contain which four types of cells in order of abundance?",
+                options: [
+                    "Alpha, beta, delta, gamma",
+                    "Beta, alpha, delta, gamma",
+                    "Delta, beta, alpha, gamma",
+                    "Gamma, delta, alpha, beta"
+                ],
+                answer: 1,
+                explanation: "Page 8"
+            },
+            {
+                question: "Beta cells of the islets of Langerhans secrete:",
+                options: [
+                    "Glucagon",
+                    "Somatostatin",
+                    "Insulin and amylin",
+                    "Polypeptide"
+                ],
+                answer: 2,
+                explanation: "Page 8"
+            },
+            {
+                question: "Alpha cells of the islets of Langerhans secrete:",
+                options: [
+                    "Glucagon",
+                    "Insulin",
+                    "Somatostatin",
+                    "Polypeptide"
+                ],
+                answer: 0,
+                explanation: "Page 8"
+            },
+            {
+                question: "In Type 1 diabetes, hyperglycemia occurs when what percentage of beta cells is destroyed?",
+                options: [
+                    "10-20%",
+                    "40-50%",
+                    "80-90%",
+                    "100%"
+                ],
+                answer: 2,
+                explanation: "Page 10"
+            },
+            {
+                question: "The renal threshold for glucose is:",
+                options: [
+                    "100 mg/dL",
+                    "126 mg/dL",
+                    "180 mg/dL",
+                    "200 mg/dL"
+                ],
+                answer: 2,
+                explanation: "Page 10"
+            },
+            {
+                question: "Blurred vision in hyperglycemia is caused by:",
+                options: [
+                    "Retinal detachment",
+                    "Swelling of lenses from osmotic effects",
+                    "Optic nerve damage",
+                    "Cataract formation"
+                ],
+                answer: 1,
+                explanation: "Page 10"
+            },
+            {
+                question: "In Type 2 diabetes, sufficient insulin production prevents which complication?",
+                options: [
+                    "Hypoglycemia",
+                    "Diabetic ketoacidosis (DKA)",
+                    "Hyperglycemic hyperosmolar state",
+                    "Nephropathy"
+                ],
+                answer: 1,
+                explanation: "Page 11"
+            },
+            {
+                question: "Insulin resistance is a condition in which:",
+                options: [
+                    "The body's cells do not respond effectively to insulin",
+                    "The body produces no insulin",
+                    "The body produces too much insulin",
+                    "Insulin is rapidly degraded"
+                ],
+                answer: 0,
+                explanation: "Page 13"
+            },
+            {
+                question: "In skeletal muscle, insulin resistance leads to all of the following EXCEPT:",
+                options: [
+                    "Decreased glucose uptake",
+                    "Reduced glycogen synthesis",
+                    "Post-meal hyperglycemia",
+                    "Increased glycogen synthesis"
+                ],
+                answer: 3,
+                explanation: "Page 14"
+            },
+            {
+                question: "In the liver, insulin resistance leads to:",
+                options: [
+                    "Decreased glucose production",
+                    "Continued glucose production despite insulin presence",
+                    "Increased glycogen storage",
+                    "Decreased fasting blood glucose"
+                ],
+                answer: 1,
+                explanation: "Page 14"
+            },
+            {
+                question: "In adipose tissue, insulin resistance leads to:",
+                options: [
+                    "Decreased lipolysis",
+                    "Decreased free fatty acids",
+                    "Increased glucose uptake",
+                    "Increased lipolysis and increased free fatty acids"
+                ],
+                answer: 3,
+                explanation: "Page 14"
+            },
+            {
+                question: "A fasting plasma glucose level of 100-125 mg/dL signals:",
+                options: [
+                    "Normal",
+                    "Pre-diabetes",
+                    "Diabetes",
+                    "Hypoglycemia"
+                ],
+                answer: 1,
+                explanation: "Page 15"
+            },
+            {
+                question: "A fasting plasma glucose level greater than 126 mg/dL signals:",
+                options: [
+                    "Normal",
+                    "Pre-diabetes",
+                    "Diabetes",
+                    "Hypoglycemia"
+                ],
+                answer: 2,
+                explanation: "Page 15"
+            },
+            {
+                question: "An oral glucose tolerance test (OGTT) result of 140-199 mg/dL signals:",
+                options: [
+                    "Normal",
+                    "Pre-diabetes",
+                    "Diabetes",
+                    "Hypoglycemia"
+                ],
+                answer: 1,
+                explanation: "Page 15"
+            },
+            {
+                question: "An HbA1c level of 5.7-6.4% indicates:",
+                options: [
+                    "Pre-diabetic",
+                    "Normal",
+                    "Diabetic",
+                    "Hypoglycemic"
+                ],
+                answer: 0,
+                explanation: "Page 16"
+            },
+            {
+                question: "An HbA1c level of 6.5% or greater indicates:",
+                options: [
+                    "Normal",
+                    "Pre-diabetic",
+                    "Diabetic",
+                    "Hypoglycemic"
+                ],
+                answer: 2,
+                explanation: "Page 16"
+            },
+            {
+                question: "HOMA-IR is a mathematical method used to estimate:",
+                options: [
+                    "Insulin secretion",
+                    "Insulin resistance from fasting blood glucose and fasting insulin levels",
+                    "Beta cell function",
+                    "Glucose tolerance"
+                ],
+                answer: 1,
+                explanation: "Page 16"
+            },
+            {
+                question: "Diabetic neuropathy includes all of the following EXCEPT:",
+                options: [
+                    "Peripheral sensory loss",
+                    "Pain and burning sensation",
+                    "Balance impairment",
+                    "Visual impairment"
+                ],
+                answer: 3,
+                explanation: "Page 18"
+            },
+            {
+                question: "Diabetic nephropathy can lead to:",
+                options: [
+                    "Blindness",
+                    "Kidney damage and renal failure",
+                    "Peripheral neuropathy",
+                    "Stroke"
+                ],
+                answer: 1,
+                explanation: "Page 18"
+            },
+            {
+                question: "What is the most common cause of death for diabetics, accounting for 40-60%?",
+                options: [
+                    "Stroke",
+                    "Coronary artery disease",
+                    "Renal failure",
+                    "Infection"
+                ],
+                answer: 1,
+                explanation: "Page 19"
+            },
+            {
+                question: "Gangrene from diabetes is the most common cause of:",
+                options: [
+                    "Blindness",
+                    "Renal failure",
+                    "Stroke",
+                    "Non-traumatic lower limb amputation"
+                ],
+                answer: 3,
+                explanation: "Page 20"
+            },
+            {
+                question: "Type 2 diabetics are how many times more likely to have a stroke?",
+                options: [
+                    "1-2 times",
+                    "2-6 times",
+                    "7-10 times",
+                    "10-15 times"
+                ],
+                answer: 1,
+                explanation: "Page 20"
+            },
+            {
+                question: "Exercise should be avoided in diabetics if blood glucose is:",
+                options: [
+                    "> 100 mg/dL with symptoms",
+                    "> 200 mg/dL with symptoms",
+                    "> 300 mg/dL with symptoms",
+                    "> 400 mg/dL with symptoms"
+                ],
+                answer: 2,
+                explanation: "Page 24"
+            },
+            {
+                question: "Gerontology is the study of which aspects of aging?",
+                options: [
+                    "Only biological aspects",
+                    "Only psychological aspects",
+                    "Social, psychological, and biological aspects",
+                    "Only social aspects"
+                ],
+                answer: 2,
+                explanation: "Page 26"
+            },
+            {
+                question: "Life span in humans is:",
+                options: [
+                    "65-74 years",
+                    "75-84 years",
+                    "85-100 years",
+                    "110-120 years"
+                ],
+                answer: 3,
+                explanation: "Page 27"
+            },
+            {
+                question: "The \"young elderly\" category includes ages:",
+                options: [
+                    "55-64",
+                    "65-74",
+                    "75-84",
+                    "85 and older"
+                ],
+                answer: 1,
+                explanation: "Page 29"
+            },
+            {
+                question: "The leading cause of death in persons over 65 is:",
+                options: [
+                    "Cancer",
+                    "Coronary heart disease",
+                    "Stroke",
+                    "COPD"
+                ],
+                answer: 1,
+                explanation: "Page 30"
+            },
+            {
+                question: "The leading cause of disability/chronic conditions in persons over 65 is:",
+                options: [
+                    "Arthritis",
+                    "Hypertension",
+                    "Hearing impairments",
+                    "Heart impairments"
+                ],
+                answer: 0,
+                explanation: "Page 31"
+            },
+            {
+                question: "The disengagement theory of aging states that:",
+                options: [
+                    "Withdrawal of individual from society leads to further isolation and life dissatisfaction",
+                    "More active elderly people are more satisfied with life",
+                    "Individuals make adaptations to gain a sense of continuity between past and present",
+                    "Aging is influenced by environmental factors"
+                ],
+                answer: 0,
+                explanation: "Page 34"
+            },
+            {
+                question: "The activity theory of aging implies that:",
+                options: [
+                    "Withdrawal from society is beneficial",
+                    "The more active elderly people are, the more likely they are to be satisfied with life",
+                    "Aging is genetically programmed",
+                    "Environmental factors are the primary cause of aging"
+                ],
+                answer: 1,
+                explanation: "Page 34"
+            },
+            {
+                question: "The free radical theory proposes that free radicals cause damage to:",
+                options: [
+                    "Only cell membranes",
+                    "Only DNA",
+                    "Cell membranes and DNA, interfering with cell diffusion and transport",
+                    "Only proteins"
+                ],
+                answer: 2,
+                explanation: "Page 36"
+            }
+        ];
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to create a randomized version of the quiz data
+        function createRandomizedQuizData() {
+            const randomizedData = [];
+            
+            originalQuizData.forEach(question => {
+                // Create a copy of the original question
+                const randomizedQuestion = {
+                    question: question.question,
+                    options: [...question.options], // Copy options array
+                    originalAnswer: question.answer, // Store original answer index
+                    explanation: question.explanation
+                };
+                
+                // Create an array of indices [0, 1, 2, 3]
+                const indices = [0, 1, 2, 3];
+                
+                // Shuffle the indices
+                shuffleArray(indices);
+                
+                // Create a new options array with shuffled order
+                const shuffledOptions = indices.map(index => question.options[index]);
+                
+                // Find the new position of the correct answer
+                const newAnswerIndex = indices.indexOf(question.answer);
+                
+                // Update the question with shuffled options and new answer
+                randomizedQuestion.options = shuffledOptions;
+                randomizedQuestion.answer = newAnswerIndex;
+                
+                randomizedData.push(randomizedQuestion);
+            });
+            
+            return randomizedData;
+        }
+
+        // Create randomized quiz data
+        let quizData = createRandomizedQuizData();
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                const correctLetter = String.fromCharCode(65 + question.answer);
+                const correctAnswerText = question.options[question.answer];
+                
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${correctLetter}) ${correctAnswerText}` : ''}
+                        ${question.explanation ? `<br><br>Explanation: ${question.explanation}` : ''}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Diabetes Mellitus and Geriatrics.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                const correctLetter = String.fromCharCode(65 + item.correctAnswer);
+                const userLetter = String.fromCharCode(65 + item.userAnswer);
+                
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${userLetter}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${item.options[item.correctAnswer]}</div>
+                        ${item.explanation ? `<div class="review-explanation">${item.explanation}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            // Re-randomize the quiz data when restarting
+            quizData = createRandomizedQuizData();
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
